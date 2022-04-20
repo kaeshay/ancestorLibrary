@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Old Library</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="../styles/sub.css">
+	<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
+	<style>
+	body{
+		background-color:#90BC65;
+	}
+	.canvas{
+		width:1200px;
+	    height:650px;
+	}
+	#container{
+		position:absolute;
+		/*border:2px solid black;*/
+	    top: 50%;
+	    left: 50%;
+	    margin-top: -325px; /* Half the height */
+	    margin-left: -600px;
+	}
+	#library{
+		position:absolute;
+	}
+	#roro{
+		position:absolute;
+		left:800px;
+		top:300px;
+	}
+	#shelf{
+		position:absolute;
+		left:240px;
+		top:60px;
+		/*border:2px solid black;*/
+		width:570px;
+		height:300px;
+	}
+	#shelf img{
+		margin-bottom:80px;
+		height:60px;
+		margin-left:3px;
+	}
+	#viewer{
+		display:none;
+		position:absolute;
+		background:#90BC65;
+		/*border:2px solid black;*/
+	}
+	#viewer img{
+		display:none;
+		height:60%;
+		margin:auto;
+		margin-top:50px;
+	}
+	#author{
+		/*border:2px solid black;*/
+	}
+	</style>
+</head>
+<body>
+	<div id="container" class="canvas">
+		<img id="library" class="room" src="assets/oldLibrary/library-inside.png">
+		<div id="shelf" class="">
+		</div>
+		<p id="author"></p>
+		<img id="roro" class="draggable" src="assets/oldLibrary/roro.png">
+		<div id="viewer" class="canvas">
+		</div>
+	</div>
+</body>
+<script>
+	var booklength=37;
+	
+	for (var i=1;i<=booklength;i++){
+	document.getElementById('shelf').innerHTML+=
+	'<img class="draggable book" src="assets/oldLibrary/'+i+'.png">'
+	}
+	for (var i=1;i<=booklength;i++){
+	document.getElementById('viewer').innerHTML+=
+	'<img class="draggable openbook" src="assets/oldLibrary/'+i+'o.png">'
+	}
+	for (var i=1;i<=booklength;i++){
+	document.getElementById('shelf').innerHTML+=
+	'<audio class="sound" src="assets/oldLibrary/'+i+'.mp3"></audio>'
+	}
+
+	var shelf = document.getElementById('shelf');
+	var viewer = document.getElementById('viewer');
+
+	var sounds=shelf.querySelectorAll(".sound");
+	var books=shelf.querySelectorAll(".book");
+	var openbooks=viewer.querySelectorAll(".openbook");
+	var viewer=document.getElementById('viewer');
+
+	var data = ["Benjamin Han","Brad Gilbert","Christopher Chen", "Joseph Lim", "Joseph Lim", "Joseph Lim", "Joshua Chang", "Kaius Wu", "Karen Guan", "Kay Liang", "Maya Cannon", "Michelle Lim", "Taylor Pannell", "Taylor Pannell", "Liby Hays", "Julie Benbassat", "Mayo Saji",  "Maya Bjornson", "Maya Bjornson", "Maya Bjornson", "Maya Bjornson", "Aliasger Rasheed", "Kevin Dong", "Angela Yu", "Holly Barszcz", "Margaux Simmons", "Ayako Maruyama", "Aubrey Murdock", "Doug Farrand", "Maria Gerdyman", "Cathy Hsiao", "Ada Chen", "Ava Zeichner", "Daniel Pollack", "Kay Liang", "Tiffany Ling", "Hannah Liongren"];
+
+	var bookCounter=0;
+	for (let i=0;i<booklength;i++){
+		books[i].addEventListener('dblclick', function(){
+			if (bookCounter==0){
+				sounds[i].play();
+				viewer.style.display='block';
+				openbooks[i].style.display='block';
+				document.title = data[i];
+				// console.log(data[1]);
+				bookCounter++;
+			}
+		});
+	}
+	for (let i=0;i<books.length;i++){
+		openbooks[i].addEventListener('dblclick', function(){
+			if (bookCounter==1){
+				sounds[i].pause();
+				viewer.style.display='none';
+				openbooks[i].style.display='none';
+				bookCounter=0;
+			}
+		});
+	}
+
+</script>
+<script type="text/javascript" src="scripts/draggable.js"></script>
+<script type="text/javascript" src="scripts/sub.js"></script>
+</html>
