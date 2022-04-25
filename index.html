@@ -8,11 +8,14 @@
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
 	<style>
 	body{
-		background-color:#90BC65;
+		background-color:#e6dbca;
+		background-image: url('assets/wheelbarrow.png');
+  		background-repeat: no-repeat;
+  		background-size: cover;
 	}
 	.canvas{
 		width:1200px;
-	    height:650px;
+	    height:670px;
 	}
 	#container{
 		position:absolute;
@@ -27,8 +30,8 @@
 	}
 	#roro{
 		position:absolute;
-		left:800px;
-		top:300px;
+		left:949px;
+		top:171px;
 	}
 	#shelf{
 		position:absolute;
@@ -44,10 +47,8 @@
 		margin-left:3px;
 	}
 	#viewer{
-		display:none;
 		position:absolute;
-		background:#90BC65;
-		/*border:2px solid black;*/
+		display:none;
 	}
 	#viewer img{
 		display:none;
@@ -62,11 +63,11 @@
 </head>
 <body>
 	<div id="container" class="canvas">
-		<img id="library" class="room" src="assets/oldLibrary/library-inside.png">
+		<img id="library" class="room" src="assets/oldLibrary/library-inside2.png">
 		<div id="shelf" class="">
 		</div>
 		<p id="author"></p>
-		<img id="roro" class="draggable" src="assets/oldLibrary/roro.png">
+		<img id="roro" class="draggable" src="assets/oldLibrary/roro2.png">
 		<div id="viewer" class="canvas">
 		</div>
 	</div>
